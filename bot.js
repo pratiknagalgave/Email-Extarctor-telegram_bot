@@ -84,7 +84,7 @@ const fetchData = async () => {
     const { data } = await axios.get(url);
     // Load the HTML into Cheerio
     const $ = cheerio.load(data);
-      const response = 'heads:';
+      let response = 'heads:';
 
     // Select and extract the data
     const headlines = [];
