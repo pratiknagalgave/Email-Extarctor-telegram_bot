@@ -97,7 +97,7 @@ const fetchData = async () => {
     console.log('Headlines from the "In the news" section:');
     headlines.forEach((headline, index) => {
       console.log(`${index + 1}. ${headline}`);
-        response +=`${index + 1}. ${headline}\n\n`
+        response +=`${index + 1}. ${headline}\n\n`;
     });
 
       return response;
