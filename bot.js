@@ -99,7 +99,7 @@ const fetchData = async () => {
       console.log(`${index + 1}. ${headline}`);
         response += `${index + 1}. ${headline}\n\n`
     });
-        bot.sendMessage( response);
+        return response;
 
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -108,11 +108,12 @@ const fetchData = async () => {
 
 bot.onText(/\/head/, async (msg) => {
     const chatId = msg.chat.id;
-   fetchData(chatId);
+   const heads = fetchData();
+     bot.sendMessage(chatId, heads);
 });
 bot.onText(/\/up/, async (msg) => {
         const chatId = msg.chat.id;
-   bot.sendMessage(chatId, 'updated');
+   bot.sendMessage(chatId, 'updated 2');
 });
 
 console.log('Bot is running...');
