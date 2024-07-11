@@ -74,4 +74,42 @@ bot.onText(/\/toplosers/, async (msg) => {
     }
 });
 
+
+const url = 'https://en.wikipedia.org/wiki/Main_Page';
+
+// Function to fetch and extract data from the website
+const fetchData = async () => {
+  try {
+    // Fetch the HTML of the website
+    const { data } = await axios.get(url);
+    // Load the HTML into Cheerio
+    const $ = cheerio.load(data);
+
+    // Select and extract the data
+    const headlines = [];
+    $('#mp-itn b a').each((index, element) => {
+      const headline = $(element).text().trim();
+      headlines.push(headline);
+    });
+
+    // Output the extracted data
+    console.log('Headlines from the "In the news" section:');
+    headlines.forEach((headline, index) => {
+      console.log(`${index + 1}. ${headline}`);
+    });
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+bot.onText(/\/head/, async (msg) => {
+    const chatId = msg.chat.id;
+   fetchData();
+});
+bot.onText(/\/up/, async (msg) => {
+        const chatId = msg.chat.id;
+   bot.sendMessage(chatId, 'updated');
+});
+
 console.log('Bot is running...');
