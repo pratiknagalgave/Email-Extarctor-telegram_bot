@@ -110,7 +110,7 @@ const fetchData = async () => {
 bot.onText(/\/head/, async (msg) => {
     const chatId = msg.chat.id;
     const heads = 'heads: ';
-   const { hhh } = await fetchData();
+   const hhh = await fetchData();
  
       bot.sendMessage(chatId, hhh);
 });
