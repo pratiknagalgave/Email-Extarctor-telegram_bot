@@ -83,8 +83,7 @@ const url = 'https://en.wikipedia.org/wiki/Main_Page';
 bot.onText(/\/head/, async (msg) => {
     const chatId = msg.chat.id;
     const heads = 'heads: ';
-  const fetchData = async (heads) => {
-      
+  
   try {
     // Fetch the HTML of the website
     const { data } = await axios.get(url);
@@ -110,9 +109,10 @@ bot.onText(/\/head/, async (msg) => {
   } catch (error) {
     console.error('Error fetching data:', error);
   }
+      bot.sendMessage(chatId, heads);
 };
-     bot.sendMessage(chatId, heads);
-});
+   
+
 bot.onText(/\/up/, async (msg) => {
         const chatId = msg.chat.id;
    bot.sendMessage(chatId, 'updated 2');
