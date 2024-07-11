@@ -8,13 +8,13 @@ const bot = new TelegramBot(token, { polling: true });
 
 const getTopGainersAndLosers = async () => {
     try {
-        const { data } = await axios.get('https://www.nseindia.com/market-data/top-gainers');
+        const { data } = await axios.get('https://www.nseindia.com');
         const $ = cheerio.load(data);
         const gainers = [];
         const losers = [];
 
         // Scrape top gainers
-        $('#topGainers tbody tr').each((i, element) => {
+        $('#tab1Ganier tbody tr').each((i, element) => {
             const name = $(element).find('td:nth-child(1)').text().trim();
             const price = $(element).find('td:nth-child(2)').text().trim();
             const change = $(element).find('td:nth-child(3)').text().trim();
@@ -25,7 +25,7 @@ const getTopGainersAndLosers = async () => {
         });
 
         // Scrape top losers
-        $('#topLosers tbody tr').each((i, element) => {
+        $('#tab1Loser tbody tr').each((i, element) => {
             const name = $(element).find('td:nth-child(1)').text().trim();
             const price = $(element).find('td:nth-child(2)').text().trim();
             const change = $(element).find('td:nth-child(3)').text().trim();
