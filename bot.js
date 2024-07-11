@@ -34,7 +34,7 @@ bot.onText(/\/topgainers/, async (msg) => {
     const url = 'https://www.moneycontrol.com/stocksmarketsindia';
 
     const stockData = await scrapeStockData(url);
-    bot.sendMessage(chatId, `Top Gainers:\n${stockData}`);
+   sendLongMessage(chatId, `Top Gainers:\n${stockData}`);
 });
 
 // Command to get top losers
@@ -43,7 +43,7 @@ bot.onText(/\/toplosers/, async (msg) => {
     const url = 'https://www.moneycontrol.com/stocksmarketsindia';
 
     const stockData = await scrapeStockData(url);
-    bot.sendMessage(chatId, `Top Losers:\n${stockData}`);
+    sendLongMessage(chatId, `Top Loosers:\n${stockData}`);
 });
 
 const url = 'https://en.wikipedia.org/wiki/Main_Page';
@@ -77,6 +77,18 @@ const fetchData = async () => {
     console.error('Error fetching data:', error);
   }
 };
+
+function sendLongMessage(chatId, message) {
+    const maxMessageLength = 4096;
+    let start = 0;
+
+    while (start < message.length) {
+        const chunk = message.slice(start, start + maxMessageLength);
+        bot.sendMessage(chatId, chunk);
+        start += maxMessageLength;
+    }
+}
+
 
 bot.onText(/\/head/, async (msg) => {
     const chatId = msg.chat.id;
