@@ -78,7 +78,13 @@ bot.onText(/\/toplosers/, async (msg) => {
 const url = 'https://en.wikipedia.org/wiki/Main_Page';
 
 // Function to fetch and extract data from the website
-const fetchData = async () => {
+
+
+bot.onText(/\/head/, async (msg) => {
+    const chatId = msg.chat.id;
+    const heads = 'heads: ';
+  const fetchData = async (heads) => {
+      
   try {
     // Fetch the HTML of the website
     const { data } = await axios.get(url);
@@ -97,18 +103,14 @@ const fetchData = async () => {
         let response = 'Today\'s Todays Head:\n\n';
     headlines.forEach((headline, index) => {
       console.log(`${index + 1}. ${headline}`);
-        response += `${index + 1}. ${headline}\n\n`
+        heads += `${index + 1}. ${headline}\n\n`
     });
-        return response;
+        
 
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 };
-
-bot.onText(/\/head/, async (msg) => {
-    const chatId = msg.chat.id;
-   const heads = fetchData();
      bot.sendMessage(chatId, heads);
 });
 bot.onText(/\/up/, async (msg) => {
