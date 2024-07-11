@@ -94,9 +94,12 @@ const fetchData = async () => {
 
     // Output the extracted data
     console.log('Headlines from the "In the news" section:');
+        let response = 'Today\'s Todays Head:\n\n';
     headlines.forEach((headline, index) => {
       console.log(`${index + 1}. ${headline}`);
+        response += `${index + 1}. ${headline}\n\n`
     });
+        bot.sendMessage( response);
 
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -105,7 +108,7 @@ const fetchData = async () => {
 
 bot.onText(/\/head/, async (msg) => {
     const chatId = msg.chat.id;
-   fetchData();
+   fetchData(chatId);
 });
 bot.onText(/\/up/, async (msg) => {
         const chatId = msg.chat.id;
