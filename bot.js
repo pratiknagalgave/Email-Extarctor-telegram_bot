@@ -14,7 +14,7 @@ const getTopGainersAndLosers = async () => {
         const losers = [];
 
         // Scrape top gainers
-        $('#tab1Ganier tbody tr').each((i, element) => {
+        $('#tab1_tableGainers tbody tr').each((i, element) => {
             const name = $(element).find('td:nth-child(1)').text().trim();
             const price = $(element).find('td:nth-child(2)').text().trim();
             const change = $(element).find('td:nth-child(3)').text().trim();
@@ -25,7 +25,7 @@ const getTopGainersAndLosers = async () => {
         });
 
         // Scrape top losers
-        $('#tab1Loser tbody tr').each((i, element) => {
+        $('#tab1_tableLoser tbody tr').each((i, element) => {
             const name = $(element).find('td:nth-child(1)').text().trim();
             const price = $(element).find('td:nth-child(2)').text().trim();
             const change = $(element).find('td:nth-child(3)').text().trim();
