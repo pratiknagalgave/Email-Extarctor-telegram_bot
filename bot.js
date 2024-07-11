@@ -113,7 +113,7 @@ bot.onText(/\/head/, async (msg) => {
    const { hhh } = await fetchData();
  
       bot.sendMessage(chatId, hhh);
-};
+});
    
 
 bot.onText(/\/up/, async (msg) => {
