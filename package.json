@@ -1,4 +1,11 @@
 {
+    "name": "telegram-bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "build": "echo 'Nothing to build'"
+  },
 
   "dependencies": {
     "dotenv": "^16.4.5",
