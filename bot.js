@@ -5,6 +5,10 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const path = require('path');
 
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
 const token = '6522836138:AAEJuk5QQ0Wp-YdCyv5ca9cZM0uL5ombtH4';
 const bot = new TelegramBot(token, { polling: true });
 
