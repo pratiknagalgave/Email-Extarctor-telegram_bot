@@ -3,9 +3,13 @@ const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 
 const token = '6522836138:AAEJuk5QQ0Wp-YdCyv5ca9cZM0uL5ombtH4';
-const bot = new TelegramBot(token, { polling: true });
+//const bot = new TelegramBot(token, { polling: true });
 const app = express();
 const port = process.env.PORT || 3000;
+
+const url1 = process.env.APP_URL || 'https://email-extarctor-telegram-bot.vercel.app/';
+const webhookUrl = `${url1}/bot${token}`;
+bot.setWebHook(webhookUrl);
 
 // Regex for email extraction
 const extractEmails = (text) => {
