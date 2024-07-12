@@ -14,7 +14,7 @@ const bot = new TelegramBot(token, { polling: true });
 
 // Serve the HTML file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    return "hellow World";
 });
 
 app.listen(PORT, () => {
